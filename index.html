@@ -3,8 +3,51 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Giannis Kounelis - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Giannis Kounelis — Junior Cloud / DevOps / Full-Stack Engineer</title>
+  <meta name="description" content="Junior Cloud, DevOps, and Full-Stack engineer based in Greece. Building cloud-native applications end-to-end with AWS, Terraform, Kubernetes, TypeScript, Python, React, FastAPI. Open to remote roles across Europe." />
+  <meta name="keywords" content="Giannis Kounelis, John Kounelis, Cloud Engineer, DevOps Engineer, Full-Stack Developer, AWS, Terraform, Kubernetes, Docker, TypeScript, Python, React, Next.js, FastAPI, Greece, Remote, Europe" />
+  <meta name="author" content="Giannis Kounelis" />
+  <link rel="canonical" href="https://johnkounelis.github.io/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Giannis Kounelis — Junior Cloud / DevOps / Full-Stack Engineer" />
+  <meta property="og:description" content="Building cloud-native applications end-to-end. Open to remote roles across Europe." />
+  <meta property="og:url" content="https://johnkounelis.github.io/" />
+  <meta property="og:image" content="https://johnkounelis.github.io/og-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Giannis Kounelis — Junior Cloud / DevOps / Full-Stack Engineer" />
+  <meta name="twitter:description" content="Building cloud-native applications end-to-end." />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23030303'/%3E%3Ctext x='50' y='68' font-family='Inter,sans-serif' font-size='60' font-weight='800' fill='white' text-anchor='middle'%3EGK%3C/text%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Giannis Kounelis",
+    "alternateName": "John Kounelis",
+    "url": "https://johnkounelis.github.io",
+    "jobTitle": "Junior Cloud / DevOps / Full-Stack Engineer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Patra",
+      "addressCountry": "Greece"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "University of East London (Metropolitan College, Greece)"
+    },
+    "sameAs": [
+      "https://github.com/johnkounelis",
+      "https://www.linkedin.com/in/giannis-kounelis"
+    ],
+    "knowsAbout": ["AWS", "Terraform", "Kubernetes", "Docker", "TypeScript", "Python", "React", "Next.js", "FastAPI", "PostgreSQL", "DevOps", "Cloud Computing"]
+  }
+  </script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Mono:wght@300;400&display=swap');
 
@@ -13,6 +56,7 @@
       --glass-border: rgba(255, 255, 255, 0.15);
       --glass-blur: 15px;
       --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --accent: #6ee7b7;
     }
 
     * {
@@ -32,7 +76,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Film grain noise overlay */
     .noise-overlay {
       position: fixed;
       top: 0;
@@ -42,10 +85,9 @@
       pointer-events: none;
       z-index: 1000;
       opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Canvas background */
     #particle-canvas {
       position: fixed;
       top: 0;
@@ -55,7 +97,6 @@
       z-index: 0;
     }
 
-    /* Main Container */
     .container {
       position: relative;
       z-index: 10;
@@ -68,7 +109,6 @@
       gap: 60px;
     }
 
-    /* Shared Glassmorphism Card Style */
     .glass-card {
       background: var(--glass-bg);
       backdrop-filter: blur(var(--glass-blur));
@@ -88,7 +128,6 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
 
-    /* Navigation */
     nav {
       width: 100%;
       max-width: 600px;
@@ -119,7 +158,6 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
 
-    /* Top Section (Hero + About) */
     .top-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -133,25 +171,106 @@
       justify-content: center;
     }
 
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(110, 231, 183, 0.1);
+      border: 1px solid rgba(110, 231, 183, 0.3);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 18px;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    .role-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     .hero-content h1 {
       font-size: 54px;
       font-weight: 800;
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-content p {
+    .hero-content .subtitle {
       font-size: 16px;
       color: #aaa;
       font-family: 'Roboto Mono', monospace;
       line-height: 1.6;
+      margin-bottom: 28px;
     }
 
-    /* Section Headers */
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      border: 1px solid var(--glass-border);
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(110, 231, 183, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
     .section-header {
       width: 100%;
       text-align: left;
@@ -190,7 +309,6 @@
       margin-bottom: 8px;
     }
 
-    /* Projects Grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -206,7 +324,7 @@
 
     .project-card h3 {
       font-size: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       color: #fff;
     }
 
@@ -214,7 +332,7 @@
       font-size: 13px;
       color: #888;
       font-family: 'Roboto Mono', monospace;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       font-weight: 400;
     }
 
@@ -222,7 +340,7 @@
       font-size: 14px;
       color: #bbb;
       line-height: 1.6;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
     .project-card ul {
@@ -230,12 +348,77 @@
       color: #aaa;
       font-size: 13px;
       line-height: 1.6;
+      margin-bottom: 20px;
     }
 
-    /* Skills Section */
+    .project-card li {
+      margin-bottom: 4px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .stack-chip {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+    }
+
+    .project-links {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #ddd;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: var(--transition-smooth);
+      letter-spacing: 0.3px;
+    }
+
+    .project-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .project-link.live {
+      background: rgba(110, 231, 183, 0.1);
+      border-color: rgba(110, 231, 183, 0.3);
+      color: var(--accent);
+    }
+
+    .project-link.live:hover {
+      background: rgba(110, 231, 183, 0.2);
+    }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       width: 100%;
     }
@@ -255,35 +438,32 @@
     }
 
     .skill-category p {
-      font-size: 14px;
+      font-size: 13px;
       color: #ccc;
       line-height: 1.8;
     }
 
-    /* Contact Section */
     .contact-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
       width: 100%;
-      margin-bottom: 50px;
     }
 
     .contact-pill {
       border-radius: 50px;
-      padding: 15px 35px;
+      padding: 15px 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
 
-    .contact-pill a,
-    .contact-pill span {
+    .contact-pill a {
       color: white;
       text-decoration: none;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -295,7 +475,26 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Responsive Design */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px 20px;
+      font-size: 12px;
+      color: #666;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    footer a {
+      color: #888;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
     @media (max-width: 900px) {
       .top-section {
         grid-template-columns: 1fr;
@@ -304,7 +503,16 @@
 
     @media (max-width: 600px) {
       .hero-content h1 {
-        font-size: 44px;
+        font-size: 40px;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
       }
 
       nav {
@@ -323,132 +531,220 @@
       .contact-pill {
         width: 100%;
       }
+
+      .glass-card {
+        padding: 28px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Background Noise -->
   <div class="noise-overlay"></div>
-
-  <!-- Particle Render Canvas -->
   <canvas id="particle-canvas"></canvas>
 
   <div class="container">
-    <!-- Navigation -->
-    <nav class="glass-card">
+
+    <nav class="glass-card" aria-label="Primary navigation">
       <a href="#about">About</a>
-      <a href="#education">Education</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Top Section -->
     <div class="top-section" id="about">
       <div class="glass-card hero-content">
-        <h1>Hello,<br>I'm Giannis Kounelis.</h1>
-        <p>Software Developer & Computer Science Graduate based in Patra, Greece.</p>
+        <span class="role-tag">Open to Remote · Europe</span>
+        <h1>Giannis Kounelis<br><span style="font-size: 0.55em; font-weight: 600; -webkit-text-fill-color: #888;">Junior Cloud / DevOps / Full-Stack Engineer</span></h1>
+        <p class="subtitle">I design, build, and deploy cloud-native applications end-to-end — from TypeScript / Python backends to AWS infrastructure provisioned with Terraform.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            View Projects
+          </a>
+          <a class="btn btn-secondary" href="./GiannisKounelis_CV.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download CV
+          </a>
+          <a class="btn btn-secondary" href="#contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Contact
+          </a>
+        </div>
       </div>
 
       <div class="glass-card content-block">
         <h2>About Me</h2>
-        <p>Focused on software engineering, database systems, AI, and web/mobile development, with additional coursework in computer and network security. Built real projects across the full development lifecycle — from design and architecture to deployment — while developing strong collaboration and problem-solving skills through team-based modules and hands-on assignments.</p>
+        <p>Computer Science graduate (BSc Hons) and self-driven builder of cloud-native software. I work across the full delivery lifecycle: backends in TypeScript / Node.js / Python / Java, frontends in React / Next.js, PostgreSQL data layers, AWS infrastructure provisioned via Terraform, containers with Docker / Kubernetes, and CI/CD with GitHub Actions. I care about observability, security, and shipping production-grade software — even on personal projects.</p>
       </div>
     </div>
 
-    <!-- Education Section -->
-    <h2 class="section-header" id="education">Education</h2>
-    <div class="glass-card content-block" style="width: 100%;">
-      <h2>BSc (Hons) in Computer Science</h2>
-      <p style="color: #aaa; margin-bottom: 15px; font-family: 'Roboto Mono', monospace;">University of East London
-        (Metropolitan College, Greece) — 2024</p>
-      <p>Gained practical experience in software engineering, database systems, artificial intelligence, web and mobile
-        development, and computer/network security. Strengthened teamwork, problem-solving and project management skills
-        through academic and professional modules.</p>
-    </div>
-
-    <!-- Projects Section -->
-    <h2 class="section-header" id="projects">Projects & Experience</h2>
+    <h2 class="section-header" id="projects">Projects</h2>
     <div class="projects-grid">
 
-      <div class="glass-card project-card">
+      <article class="glass-card project-card">
         <h3>FlowFoundry Pro</h3>
-        <h4>AI Workflow Automation Platform</h4>
-        <p>Built a production-grade, multi-tenant AI automation platform end-to-end, covering backend architecture,
-          frontend console, observability, and infra provisioning.</p>
+        <h4>AI Workflow Automation Platform · Personal Project</h4>
+        <p>Production-grade, multi-tenant SaaS with event-driven async execution, 100+ integrations, and full DevSecOps pipeline.</p>
         <ul>
-          <li>Event-driven architecture using Node.js, Next.js, tRPC, Prisma/Postgres, Redis, Inngest.</li>
-          <li>Flow Builder Console with canvas-based editing.</li>
-          <li>Reusable Connector SDK (HTTP, Slack, Gmail, Notion).</li>
-          <li>Provisioned environments using Docker, Kubernetes, and Terraform.</li>
+          <li>Multi-tenant org isolation with RBAC across 4 roles, libsodium credential encryption, Redis rate limiting.</li>
+          <li>Event-driven engine via Inngest with retries, token / cost tracking, and OpenTelemetry tracing.</li>
+          <li>Reusable Connector SDK (Slack, Gmail, Notion, Sheets, webhooks) with strict Zod typing.</li>
+          <li>CI/CD with CodeQL, Trivy, gitleaks security scans + k6 load testing.</li>
         </ul>
-      </div>
+        <div class="project-stack">
+          <span class="stack-chip">Next.js 14</span>
+          <span class="stack-chip">tRPC</span>
+          <span class="stack-chip">Prisma</span>
+          <span class="stack-chip">PostgreSQL</span>
+          <span class="stack-chip">Redis</span>
+          <span class="stack-chip">Inngest</span>
+          <span class="stack-chip">Stripe</span>
+          <span class="stack-chip">Kubernetes</span>
+          <span class="stack-chip">Terraform</span>
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/johnkounelis/flowfoundry-pro" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
 
-      <div class="glass-card project-card">
+      <article class="glass-card project-card">
         <h3>EduLearn</h3>
-        <h4>Cloud Based IT Career Learning Platform</h4>
-        <p>Delivered a full stack, cloud native learning platform with a production ready FastAPI backend, React SPA,
-          and AWS infrastructure.</p>
+        <h4>Cloud-Native IT Career Learning Platform · Personal Project</h4>
+        <p>Full-stack learning platform with live deployment on AWS, async FastAPI backend, and Terraform-provisioned infrastructure.</p>
         <ul>
-          <li>FastAPI backend with JWT, RBAC, and async Pydantic validation.</li>
-          <li>PostgreSQL schema with SQLAlchemy 2.0 async ORM.</li>
-          <li>React 18 SPA with protected routes.</li>
-          <li>AWS infra via Terraform (VPC, ECS Fargate, ALB, RDS, ECR).</li>
+          <li>Async FastAPI backend with JWT auth, RBAC, Pydantic v2 validation, bcrypt hashing.</li>
+          <li>SQLAlchemy 2.0 async ORM, Alembic migrations, normalized PostgreSQL schema.</li>
+          <li>React 18 SPA with React Router v6, protected routes, token lifecycle management.</li>
+          <li>AWS via Terraform: VPC, ECS Fargate, ALB, RDS, ECR, IAM — multi-AZ with auto-scaling.</li>
+          <li>GitHub Actions CI/CD: tests, Docker builds, ECR push, ECS deploys.</li>
         </ul>
-      </div>
+        <div class="project-stack">
+          <span class="stack-chip">FastAPI</span>
+          <span class="stack-chip">Python</span>
+          <span class="stack-chip">SQLAlchemy 2</span>
+          <span class="stack-chip">PostgreSQL</span>
+          <span class="stack-chip">React 18</span>
+          <span class="stack-chip">Docker</span>
+          <span class="stack-chip">Terraform</span>
+          <span class="stack-chip">AWS ECS</span>
+        </div>
+        <div class="project-links">
+          <a class="project-link live" href="https://edu-learn-cloud-app-ivory.vercel.app" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            Live Demo
+          </a>
+          <a class="project-link" href="https://edulearn-cloud-app.onrender.com/docs" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            API Docs
+          </a>
+          <a class="project-link" href="https://github.com/johnkounelis/EduLearn-Cloud-App" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
 
-      <div class="glass-card project-card">
-        <h3>VR Data Visualization</h3>
-        <h4>Unreal Engine 5.3 (Thesis)</h4>
-        <p>Developed an immersive VR data visualization platform enabling interactive exploration of large datasets with
-          high-fidelity rendering and VR interactions.</p>
+      <article class="glass-card project-card">
+        <h3>Java Recruiting Platform</h3>
+        <h4>Full-Stack Job Board · Personal Project</h4>
+        <p>3-role recruiting platform with secure auth, bilingual UI, and full job lifecycle management.</p>
         <ul>
-          <li>Full VR interaction system (grab, teleportation, UI) using OpenXR.</li>
-          <li>Multi-headset support and virtual production tool integration.</li>
-          <li>Optimized using Nanite, Lumen, ray tracing, and VRS.</li>
+          <li>Distinct dashboards for Candidate / Recruiter / Admin with role-based access control.</li>
+          <li>SHA-256 password hashing, CSRF protection, server-side input sanitization.</li>
+          <li>Bilingual EN / EL support with client-side language switching.</li>
+          <li>HikariCP connection pooling, Gson JSON APIs, seed data automation.</li>
         </ul>
-      </div>
+        <div class="project-stack">
+          <span class="stack-chip">Java 8</span>
+          <span class="stack-chip">Servlets</span>
+          <span class="stack-chip">JSP</span>
+          <span class="stack-chip">MySQL</span>
+          <span class="stack-chip">Bootstrap 5</span>
+          <span class="stack-chip">Maven</span>
+          <span class="stack-chip">Tomcat</span>
+        </div>
+        <div class="project-links">
+          <a class="project-link" href="https://github.com/johnkounelis/java-recruiting" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="glass-card project-card">
+        <h3>VR Data Visualization</h3>
+        <h4>Unreal Engine 5.3 · BSc Thesis</h4>
+        <p>Immersive VR platform for interactive exploration of large datasets with high-fidelity rendering.</p>
+        <ul>
+          <li>Full VR interaction system (grab, teleportation, UI navigation, haptics) over OpenXR.</li>
+          <li>Multi-headset support: Oculus, Index, Vive, WMR.</li>
+          <li>Optimized via Nanite, Lumen, hardware ray tracing, Variable Rate Shading.</li>
+          <li>Virtual production tools (Virtual Camera, nDisplay) and Concert Sync collaboration.</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-chip">Unreal Engine 5.3</span>
+          <span class="stack-chip">OpenXR</span>
+          <span class="stack-chip">C++</span>
+          <span class="stack-chip">Blueprints</span>
+        </div>
+      </article>
 
     </div>
 
-    <!-- Skills Section -->
     <h2 class="section-header" id="skills">Technical Skills</h2>
     <div class="skills-grid">
       <div class="glass-card skill-category">
-        <h3>Programming</h3>
-        <p>TypeScript, Java, Python, PHP</p>
+        <h3>Languages</h3>
+        <p>TypeScript, JavaScript, Python, Java, SQL, Bash, PHP, HTML, CSS</p>
       </div>
       <div class="glass-card skill-category">
-        <h3>Web Development</h3>
-        <p>React, Next.js, HTML, CSS, Bootstrap, WordPress</p>
+        <h3>Cloud &amp; DevOps</h3>
+        <p>AWS (ECS Fargate, RDS, ALB, ECR, VPC, IAM, CloudWatch), Docker, Kubernetes (Kustomize), Terraform, GitHub Actions, Linux, Nginx</p>
       </div>
       <div class="glass-card skill-category">
         <h3>Backend</h3>
-        <p>Node.js, tRPC, FastAPI, SQLAlchemy, Prisma, Redis</p>
+        <p>Node.js, Next.js (App Router), tRPC, FastAPI, Express, Prisma, SQLAlchemy 2.0 (async), Inngest, Redis, JWT, OAuth2, RBAC, REST APIs</p>
       </div>
       <div class="glass-card skill-category">
-        <h3>Cloud & DevOps</h3>
-        <p>AWS (ECS, ALB, RDS, VPC), Docker, Kubernetes, Terraform, GitHub Actions</p>
+        <h3>Frontend</h3>
+        <p>React 18, Next.js 14, Tailwind CSS, Radix UI, Bootstrap 5, React Router, Axios</p>
       </div>
       <div class="glass-card skill-category">
         <h3>Databases</h3>
-        <p>PostgreSQL, MySQL, SQLite</p>
+        <p>PostgreSQL, MySQL, SQLite, Redis</p>
       </div>
       <div class="glass-card skill-category">
-        <h3>Tools & Other</h3>
-        <p>Git, VS Code, Postman<br>Unreal Engine 5.3, OpenXR, VR/AR</p>
+        <h3>Observability &amp; Quality</h3>
+        <p>OpenTelemetry, Sentry, Vitest, Playwright (E2E), k6 (load testing), axe-core (a11y)</p>
+      </div>
+      <div class="glass-card skill-category">
+        <h3>Security · DevSecOps</h3>
+        <p>CodeQL, Trivy, gitleaks, libsodium, CSRF protection, SHA-256 / bcrypt hashing</p>
+      </div>
+      <div class="glass-card skill-category">
+        <h3>Tooling &amp; Other</h3>
+        <p>Git, Postman, Turborepo, pnpm workspaces, Agile, TDD, monorepos, Unreal Engine 5.3, OpenXR</p>
       </div>
     </div>
 
-    <!-- Contact Section -->
+    <h2 class="section-header" id="education">Education</h2>
+    <div class="glass-card content-block" style="width: 100%;">
+      <h2>BSc (Hons) in Computer Science</h2>
+      <p style="color: #aaa; margin-bottom: 15px; font-family: 'Roboto Mono', monospace;">University of East London (Metropolitan College, Greece) — 2024</p>
+      <p>Relevant coursework: Software Engineering, Database Systems, Distributed Systems, Artificial Intelligence, Web &amp; Mobile Development, Computer &amp; Network Security, Algorithms &amp; Data Structures, Operating Systems.</p>
+    </div>
+
     <h2 class="section-header" id="contact">Get In Touch</h2>
     <div class="contact-grid">
       <div class="glass-card contact-pill">
         <a href="mailto:j.kunelis@outlook.com">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
             <polyline points="22,6 12,13 2,6"></polyline>
           </svg>
@@ -456,20 +752,8 @@
         </a>
       </div>
       <div class="glass-card contact-pill">
-        <a href="tel:+306972681400">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-            </path>
-          </svg>
-          (+30) 6972681400
-        </a>
-      </div>
-      <div class="glass-card contact-pill">
-        <a href="https://www.linkedin.com/in/γιάννης-κουνέλης" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+        <a href="https://www.linkedin.com/in/giannis-kounelis" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
             <rect x="2" y="9" width="4" height="12"></rect>
             <circle cx="4" cy="4" r="2"></circle>
@@ -479,21 +763,21 @@
       </div>
       <div class="glass-card contact-pill">
         <a href="https://github.com/johnkounelis" target="_blank" rel="noopener noreferrer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
           </svg>
           GitHub
         </a>
       </div>
     </div>
+
+    <footer>
+      © 2026 Giannis Kounelis · Hand-coded HTML &amp; CSS · Hosted on GitHub Pages · <a href="https://github.com/johnkounelis/johnkounelis.github.io" target="_blank" rel="noopener noreferrer">View source</a>
+    </footer>
+
   </div>
 
   <script>
-    /**
-     * Elegant Star/Dust Particle Canvas Background
-     * Retains the magnetic mouse interaction for a subtle interactive feel.
-     */
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d', { alpha: false });
     let particles = [];
@@ -520,17 +804,14 @@
       }
 
       update() {
-        // Slow drifting
         this.x += this.vx;
         this.y += this.vy;
 
-        // Wrap around screen
         if (this.x < 0) this.x = canvas.width;
         if (this.x > canvas.width) this.x = 0;
         if (this.y < 0) this.y = canvas.height;
         if (this.y > canvas.height) this.y = 0;
 
-        // Subtle magnetic repulsion from mouse
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
@@ -565,7 +846,7 @@
     }
 
     function animateParticles() {
-      ctx.fillStyle = '#030303'; // Deep black background
+      ctx.fillStyle = '#030303';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
@@ -577,7 +858,6 @@
     initParticles();
     animateParticles();
 
-    // Track mouse for particle interaction
     window.addEventListener('mousemove', (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
